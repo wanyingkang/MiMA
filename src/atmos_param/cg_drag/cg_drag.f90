@@ -323,7 +323,7 @@ type(time_type),         intent(in)      :: Time
       call diag_manager_init
       call constants_init
 #ifdef COL_DIAG
-      call column_diagnostics_init 
+      call column_diagnostics_init(lonb,latb)
 #endif SKIP
 !---------------------------------------------------------------------
 !    read namelist.
@@ -426,9 +426,7 @@ type(time_type),         intent(in)      :: Time
         call initialize_diagnostic_columns    &
                      (mod_name, num_diag_pts_latlon, num_diag_pts_ij, &
                       i_coords_gl, j_coords_gl, lat_coords_gl,   &
-!mj dimensions are different
-!                      lon_coords_gl, lonb(:,1), latb(1,:), do_column_diagnostics, &
-                      lon_coords_gl, lonb, latb, do_column_diagnostics, &
+                      lon_coords_gl, do_column_diagnostics, &
                       diag_lon, diag_lat, diag_i, diag_j, diag_units)
       endif
 #endif
